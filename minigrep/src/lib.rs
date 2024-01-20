@@ -58,22 +58,22 @@ pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
 }
 
 pub fn search_case_insensitive<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
-    let mut results = Vec::new();
-    let query = query.to_lowercase();
-    for line in contents.lines() {
-        if line.to_lowercase().contains(&query) {
-            results.push(line);
-        }
-    }
-    results
-
-    //记得去查查在闭包里怎么 to_lowercase
-    //这里需要把 line to_lowercase 后再进行判断
+    // let mut results = Vec::new();
     // let query = query.to_lowercase();
-    // println!("the value of query is {}", query);
-    // contents.lines()
-    //     .filter(|line| line.contains(&query))
-    //     .collect()
+    // for line in contents.lines() {
+    //     if line.to_lowercase().contains(&query) {
+    //         results.push(line);
+    //     }
+    // }
+    // results
+
+    // 记得去查查在闭包里怎么 to_lowercase
+    // 这里需要把 line to_lowercase 后再进行判断
+    let query = query.to_lowercase();
+    println!("the value of query is {}", query);
+    contents.lines()
+        .filter(|line| line.to_lowercase().contains(&query))
+        .collect()
 }
 
 #[cfg(test)]
